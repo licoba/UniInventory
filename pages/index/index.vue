@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<view class="title-main">出入库管家</view>
-		<view class=".cu-form-group">
+		<view class="cu-form-group">
 			<view class="title">选择企业</view>
 			<picker @change="PickerChange" :value="index" :range="picker">
 				<view class="picker">
@@ -10,9 +10,9 @@
 			</picker>
 		</view>
 
-		<view class=".cu-form-group">
+		<view class="cu-form-group">
 			<view class="title">手机号码</view>
-			<input placeholder="请输入手机号" name="input" maxlength="11"></input>
+			<input ref="phone" placeholder="请输入手机号" name="input" maxlength="11" v-model="phone"></input>
 			<view class="cu-capsule radius">
 				<view class='cu-tag bg-blue '>
 					+86
@@ -23,9 +23,9 @@
 			</view>
 		</view>
 
-		<view class=".cu-form-group">
+		<view class="cu-form-group">
 			<view class="title">密码</view>
-			<input placeholder="请输入密码" name="input" password="true"></input>
+			<input ref="password" placeholder="请输入密码" name="input" password="true" v-model="password"></input>
 		</view>
 
 		<view class="box">
@@ -40,8 +40,6 @@
 		</view>
 		<!-- <button @click="open">打开弹窗</button> -->
 		<tui-toast ref="toast"></tui-toast>
-
-
 	</view>
 
 </template>
@@ -53,11 +51,26 @@
 				index: 0,
 				picker: ['伯亨家具', '测试企业'],
 				showAlert: true,
+				phone: '',
+				password: '',
 			}
 		},
 		methods: {
 			login() {
-				console.log("请求登录接口")
+				console.log("请求登录 ,phone", this.phone, "password", this.password)
+				let params = {
+					title: "操作成功",
+					imgUrl: "/static/images/toast/check-circle.png",
+					icon: false
+				};
+				if (!this.phone) {
+					params.title = '请输入手机号'
+					return this.$refs.toast.show(params)
+				} else if (!this.password) {
+					params.title = '请输入密码'
+					return this.$refs.toast.show(params)
+				}
+
 				// this.showAlert = true
 				uni.showLoading({
 					title: '登录中……'
@@ -66,18 +79,12 @@
 					name: 'user',
 					data: {
 						method: 'login',
-						phone: '17322309201',
+						phone: this.phone,
 						username: '八八',
-						password: '123456',
+						password: this.password,
 						company: '伯亨家具'
 					}
 				}).then((res) => {
-					// this.showAlert = false
-					let params = {
-						title: "操作成功",
-						imgUrl: "/static/images/toast/check-circle.png",
-						icon: true
-					};
 					uni.hideLoading();
 					console.log("返回结果", res.result)
 					if (res.result.code == 1) //登录成功
@@ -95,9 +102,11 @@
 					console.error(err)
 				})
 			},
-
 			open() {
 				this.showAlert = true
+			},
+			PickerChange() {
+				() => {}
 			}
 
 		}

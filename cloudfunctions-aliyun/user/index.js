@@ -3,7 +3,7 @@ const db = uniCloud.database() // 获取数据库的引用
 
 
 let response = {
-	code: 1,
+	code: -1,
 	msg: "no msg",
 	data: []
 }
@@ -34,11 +34,12 @@ async function checkLogin(collection, event) {
 	const username = event.username
 	const password = event.password
 	const phone = event.phone
+
 	if (collection && event) {
 		queryresult = await collection.where({
 			phone: event.phone,
 		}).get()
-		console.log("queryresult：", queryresult)
+		// console.log("queryresult：", queryresult)
 	}
 	if (queryresult.data.length > 0) user = queryresult.data[0]
 	if (!user) {

@@ -185,20 +185,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 var _default =
 {
   data: function data() {
     return {
       index: 0,
       picker: ['伯亨家具', '测试企业'],
-      showAlert: true };
+      showAlert: true,
+      phone: '',
+      password: '' };
 
   },
   methods: {
     login: function login() {var _this = this;
-      console.log("请求登录接口");
+      console.log("请求登录 ,phone", this.phone, "password", this.password);
+      var params = {
+        title: "操作成功",
+        imgUrl: "/static/images/toast/check-circle.png",
+        icon: false };
+
+      if (!this.phone) {
+        params.title = '请输入手机号';
+        return this.$refs.toast.show(params);
+      } else if (!this.password) {
+        params.title = '请输入密码';
+        return this.$refs.toast.show(params);
+      }
+
       // this.showAlert = true
       uni.showLoading({
         title: '登录中……' });
@@ -207,18 +220,12 @@ var _default =
         name: 'user',
         data: {
           method: 'login',
-          phone: '17322309201',
+          phone: this.phone,
           username: '八八',
-          password: '123456',
+          password: this.password,
           company: '伯亨家具' } }).
 
       then(function (res) {
-        // this.showAlert = false
-        var params = {
-          title: "操作成功",
-          imgUrl: "/static/images/toast/check-circle.png",
-          icon: true };
-
         uni.hideLoading();
         console.log("返回结果", res.result);
         if (res.result.code == 1) //登录成功
@@ -236,9 +243,11 @@ var _default =
         console.error(err);
       });
     },
-
     open: function open() {
       this.showAlert = true;
+    },
+    PickerChange: function PickerChange() {
+      (function () {});
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 17)["default"]))
 
