@@ -12,7 +12,7 @@
 
 		<view class="cu-form-group">
 			<view class="title">手机号码</view>
-			<input ref="phone" placeholder="请输入手机号" name="input" maxlength="11" v-model="phone"></input>
+			<input type="number" ref="phone"  placeholder="请输入手机号" name="input" maxlength="11" v-model="phone"></input>
 			<view class="cu-capsule radius">
 				<view class='cu-tag bg-blue '>
 					+86

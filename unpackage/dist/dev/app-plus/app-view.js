@@ -275,6 +275,7 @@ var render = function() {
           _c("v-uni-input", {
             ref: "phone",
             attrs: {
+              type: "number",
               placeholder: "请输入手机号",
               name: "input",
               maxlength: "11",
