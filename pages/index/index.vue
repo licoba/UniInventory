@@ -1,199 +1,78 @@
 <template>
 	<view class="content">
-		<view class="title">uniCloud 基础示例</view>
-		<view class="tips">
-			<view>1.在cloudfunctions目录右键创建并关联服务空间</view>
-			<view>2.在cloudfunctions目录内db_init.json上右键初始化云数据库</view>
-			<view>3.在cloudfunctions目录右键选择“上传所有云函数”</view>
-			<view>开始愉快的体验uniCloud吧！</view>
+		<view class="title-main">出入库管家</view>
+		<view class=".cu-form-group">
+			<view class="title">选择企业</view>
+			<picker @change="PickerChange" :value="index" :range="picker">
+				<view class="picker">
+					{{index>-1?picker[index]:'禁止换行，超出容器部分会以 ... 方式截断'}}
+				</view>
+			</picker>
 		</view>
-		<view class="btn-list">
-			<button type="primary" @click="add">新增一条数据</button>
-			<button type="primary" @click="remove">删除一条数据</button>
-			<button type="primary" @click="update">修改数据</button>
-			<button type="primary" @click="get">查询前10条数据</button>
-			<button type="primary" @click="useCommon">使用公用模块</button>
-			<button type="primary" @click="upload">上传文件</button>
+
+		<view class=".cu-form-group">
+			<view class="title">手机号码</view>
+			<input placeholder="请输入手机号" name="input" maxlength="11"></input>
+			<view class="cu-capsule radius">
+				<view class='cu-tag bg-blue '>
+					+86
+				</view>
+				<view class="cu-tag line-blue">
+					中国大陆
+				</view>
+			</view>
+		</view>
+
+		<view class=".cu-form-group">
+			<view class="title">密码</view>
+			<input placeholder="请输入密码" name="input" password="true"></input>
+		</view>
+
+		<view class="box">
+			<view class="cu-bar btn-group">
+				<button class="cu-btn bg-green shadow-blur round lg" @click="login">登录</button>
+			</view>
+		</view>
+		
+		<view class="cu-load load-modal" v-if="showLoginModal">
+			<!-- <view class="cuIcon-emojifill text-orange"></view> -->
+			<!-- <image src="/static/logo.png" mode="aspectFit"></image> -->
+			<view class="gray-text">登录中...</view>
 		</view>
 	</view>
+
 </template>
 
 <script>
 	export default {
 		data() {
-			return {}
+			return {
+				index: 0,
+				picker: ['伯亨家具', '测试企业'],
+				showLoginModal: false,
+			}
 		},
 		methods: {
-			add() {
-				uni.showLoading({
-					title: '处理中...'
-				})
+			login() {
+				console.log("请求登录接口")
+				this.showLoginModal = true
 				uniCloud.callFunction({
-					name: 'add',
+					name: 'login',
 					data: {
-						name: 'DCloud',
-						subType: 'uniCloud',
-						createTime: Date.now()
+						phone: '17322309201',
+						username: '八八',
+						password: '123456',
+						company:'伯亨家具'
 					}
 				}).then((res) => {
-					uni.hideLoading()
-					uni.showModal({
-						content: `成功添加一条数据，文档id为：${res.result.id}`,
-						showCancel: false
-					})
+					this.showLoginModal = false
 					console.log(res)
 				}).catch((err) => {
-					uni.hideLoading()
-					uni.showModal({
-						content: `添加数据失败，错误信息为：${err.message}`,
-						showCancel: false
-					})
+					this.showLoginModal = false
 					console.error(err)
-				})
-			},
-			remove() {
-				uni.showLoading({
-					title: '处理中...'
-				})
-				uniCloud.callFunction({
-					name: 'remove'
-				}).then((res) => {
-					uni.hideLoading()
-					uni.showModal({
-						content: res.result.msg,
-						showCancel: false
-					})
-					console.log(res)
-				}).catch((err) => {
-					uni.hideLoading()
-					uni.showModal({
-						content: `删除失败，错误信息为：${err.message}`,
-						showCancel: false
-					})
-					console.error(err)
-				})
-			},
-			update() {
-				uni.showLoading({
-					title: '处理中...'
-				})
-				uniCloud.callFunction({
-					name: 'update',
-					data: {
-						name: 'DCloud',
-						subType: 'html 5+',
-						createTime: Date.now()
-					}
-				}).then((res) => {
-					uni.hideLoading()
-					uni.showModal({
-						content: res.result.msg,
-						showCancel: false
-					})
-					console.log(res)
-				}).catch((err) => {
-					uni.hideLoading()
-					uni.showModal({
-						content: `更新操作执行失败，错误信息为：${err.message}`,
-						showCancel: false
-					})
-					console.error(err)
-				})
-			},
-			get() {
-				uni.showLoading({
-					title: '处理中...'
-				})
-				uniCloud.callFunction({
-					name: 'get'
-				}).then((res) => {
-					uni.hideLoading()
-					uni.showModal({
-						content: `查询成功，获取数据列表为：${JSON.stringify(res.result.data)}`,
-						showCancel: false
-					})
-					console.log(res)
-				}).catch((err) => {
-					uni.hideLoading()
-					uni.showModal({
-						content: `查询失败，错误信息为：${err.message}`,
-						showCancel: false
-					})
-					console.error(err)
-				})
-			},
-			useCommon() {
-				console.log('请确保自己已经阅读并按照公用模块文档操作 https://uniapp.dcloud.io/uniCloud/cf-common')
-				uniCloud.callFunction({
-					name: 'use-common'
-				}).then((res) => {
-					uni.hideLoading()
-					uni.showModal({
-						content: '云函数use-common返回结果：' + JSON.stringify(res.result),
-						showCancel: false
-					})
-					console.log(res)
-				}).catch((err) => {
-					uni.hideLoading()
-					uni.showModal({
-						content: `云函数use-common执行失败，错误信息为：${err.message}`,
-						showCancel: false
-					})
-					console.error(err)
-				})
-			},
-			upload() {
-				new Promise((resolve, reject) => {
-					uni.chooseImage({
-						count: 1,
-						success: res => {
-							const path = res.tempFilePaths[0]
-							let ext
-							// #ifdef H5
-							ext = res.tempFiles[0].name.split('.').pop()
-							// #endif
-							// #ifndef H5
-							// 字节跳动小程序ios端选择文件会带query
-							ext = res.tempFilePaths[0].split('?')[0].split('.').pop()
-							// #endif
-							const options = {
-								filePath: path,
-								cloudPath: Date.now() + '.' + ext
-							}
-							resolve(options)
-						},
-						fail: () => {
-							reject(new Error('Fail_Cancel'))
-						}
-					})
-				}).then((options) => {
-					uni.showLoading({
-						title: '文件上传中...'
-					})
-					return uniCloud.uploadFile({
-						...options,
-						onUploadProgress(e) {
-							console.log(e)
-						}
-					})
-				}).then(res => {
-					uni.hideLoading()
-					console.log(res);
-					uni.showModal({
-						content: '图片上传成功，fileId为：' + res.fileID,
-						showCancel: false
-					})
-				}).catch((err) => {
-					uni.hideLoading()
-					console.log(err);
-					if (err.message !== 'Fail_Cancel') {
-						uni.showModal({
-							content: `图片上传失败，错误信息为：${err.message}`,
-							showCancel: false
-						})
-					}
 				})
 			}
+			
 		}
 	}
 </script>
@@ -203,7 +82,7 @@
 		padding-bottom: 30px;
 	}
 
-	.title {
+	.title-main {
 		font-weight: bold;
 		text-align: center;
 		padding: 20px 0px;
@@ -226,5 +105,13 @@
 
 	.upload-preview {
 		width: 100%;
+	}
+
+	.cu-form-group .title {
+		min-width: calc(4em + 15px);
+	}
+
+	.box {
+		margin: 20upx 0;
 	}
 </style>
