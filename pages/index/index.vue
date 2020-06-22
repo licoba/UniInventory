@@ -33,12 +33,15 @@
 				<button class="cu-btn bg-green shadow-blur round lg" @click="login">登录</button>
 			</view>
 		</view>
-		
-		<view class="cu-load load-modal" v-if="showLoginModal">
-			<!-- <view class="cuIcon-emojifill text-orange"></view> -->
-			<!-- <image src="/static/logo.png" mode="aspectFit"></image> -->
+
+		<!-- 这个color ui 自带的alert不好用，很丑-->
+		<view class="cu-load load-modal" v-if="false">
 			<view class="gray-text">登录中...</view>
 		</view>
+		<!-- <button @click="open">打开弹窗</button> -->
+		<tui-toast ref="toast"></tui-toast>
+
+
 	</view>
 
 </template>
@@ -49,30 +52,54 @@
 			return {
 				index: 0,
 				picker: ['伯亨家具', '测试企业'],
-				showLoginModal: false,
+				showAlert: true,
 			}
 		},
 		methods: {
 			login() {
 				console.log("请求登录接口")
-				this.showLoginModal = true
+				// this.showAlert = true
+				uni.showLoading({
+					title: '登录中……'
+				});
 				uniCloud.callFunction({
-					name: 'login',
+					name: 'user',
 					data: {
+						method: 'login',
 						phone: '17322309201',
 						username: '八八',
 						password: '123456',
-						company:'伯亨家具'
+						company: '伯亨家具'
 					}
 				}).then((res) => {
-					this.showLoginModal = false
-					console.log(res)
+					// this.showAlert = false
+					let params = {
+						title: "操作成功",
+						imgUrl: "/static/images/toast/check-circle.png",
+						icon: true
+					};
+					uni.hideLoading();
+					console.log("返回结果", res.result)
+					if (res.result.code == 1) //登录成功
+						uni.showToast({
+							title: res.result.msg,
+							duration: 1000
+						});
+					else {
+						params.title = res.result.msg;
+						params.icon = false;
+						this.$refs.toast.show(params)
+					}
 				}).catch((err) => {
-					this.showLoginModal = false
+					this.showAlert = false
 					console.error(err)
 				})
+			},
+
+			open() {
+				this.showAlert = true
 			}
-			
+
 		}
 	}
 </script>

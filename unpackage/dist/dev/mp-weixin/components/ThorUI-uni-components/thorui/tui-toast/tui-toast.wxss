@@ -1,0 +1,66 @@
+
+.tui-toast.data-v-58043a74 {
+	background-color: rgba(0, 0, 0, 0.6);
+	border-radius: 10rpx;
+	position: fixed;
+	visibility: hidden;
+	opacity: 0;
+	left: 50%;
+	top: 48%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	-webkit-transition:  0.3s ease-in-out;
+	transition:  0.3s ease-in-out;
+	-webkit-transition-property:opacity,visibility;
+	transition-property:opacity,visibility;
+	z-index: 9999;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	padding: 60rpx 20rpx 54rpx 20rpx;
+	box-sizing: border-box;
+}
+.tui-toast-padding.data-v-58043a74 {
+	padding-top: 50rpx !important;
+	padding-bottom: 50rpx !important;
+}
+.tui-unicon-padding.data-v-58043a74 {
+	padding: 24rpx 40rpx !important;
+	word-break: break-all;
+}
+.tui-toast-show.data-v-58043a74 {
+	visibility: visible;
+	opacity: 1;
+}
+.tui-toast-img.data-v-58043a74 {
+	width: 120rpx;
+	height: 120rpx;
+	display: block;
+	margin-bottom: 28rpx;
+}
+.tui-toast-text.data-v-58043a74 {
+	font-size: 30rpx;
+	line-height: 30rpx;
+	font-weight: 400;
+	color: #fff;
+	text-align: center;
+}
+.tui-unicon.data-v-58043a74{
+	line-height: 40rpx !important;
+	font-size: 32rpx !important;
+}
+.tui-content-ptop.data-v-58043a74 {
+	padding-top: 10rpx;
+	font-size: 26rpx !important;
+}
+

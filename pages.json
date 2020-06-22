@@ -12,5 +12,11 @@
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"easycom": { //easycom组件模式（无需手动引入，开发工具自带智能感知）
+		"autoscan": true,
+		"custom": {
+			"tui-(.*)": "@/components/ThorUI-uni-components/thorui/tui-$1/tui-$1.vue"
+		}
 	}
 }

@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "uni-app",
-  "usingComponents": {}
+  "usingComponents": {
+    "tui-toast": "/components/ThorUI-uni-components/thorui/tui-toast/tui-toast"
+  }
 }
