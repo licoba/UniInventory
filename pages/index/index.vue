@@ -25,7 +25,7 @@
 
 		<view class="cu-form-group">
 			<view class="title">密码</view>
-			<input ref="password" placeholder="请输入密码" name="input" password="true" v-model="password"></input>
+			<input ref="password" maxlength="18" placeholder="请输入密码" name="input" password="true" v-model="password"></input>
 		</view>
 
 		<view class="box">

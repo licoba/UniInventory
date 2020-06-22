@@ -9,7 +9,7 @@
   "compileType": "miniprogram",
   "libVersion": "",
   "appid": "touristappid",
-  "projectname": "云函数项目",
+  "projectname": "出入库管家",
   "condition": {
     "search": {
       "current": -1,

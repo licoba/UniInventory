@@ -1,9 +1,9 @@
 {
-    "name" : "云函数项目",
+    "name" : "出入库管家",
     "appid" : "__UNI__C3C480B",
-    "description" : "",
+    "description" : "基于uniapp的跨平台库存管理工具",
     "versionName" : "1.0.0",
-    "versionCode" : "100",
+    "versionCode" : 1,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
@@ -11,7 +11,7 @@
         "nvueCompiler" : "uni-app",
         "compilerVersion" : 3,
         "splashscreen" : {
-            "alwaysShowBeforeRender" : true,
+            "alwaysShowBeforeRender" : false,
             "waiting" : true,
             "autoclose" : true,
             "delay" : 0

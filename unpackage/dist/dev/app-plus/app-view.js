@@ -321,6 +321,7 @@ var render = function() {
           _c("v-uni-input", {
             ref: "password",
             attrs: {
+              maxlength: "18",
               placeholder: "请输入密码",
               name: "input",
               password: "true",
