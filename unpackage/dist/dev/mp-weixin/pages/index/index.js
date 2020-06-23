@@ -101,7 +101,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   tuiToast: function() {
-    return __webpack_require__.e(/*! import() | components/ThorUI-uni-components/thorui/tui-toast/tui-toast */ "components/ThorUI-uni-components/thorui/tui-toast/tui-toast").then(__webpack_require__.bind(null, /*! @/components/ThorUI-uni-components/thorui/tui-toast/tui-toast.vue */ 23))
+    return __webpack_require__.e(/*! import() | components/ThorUI-uni-components/thorui/tui-toast/tui-toast */ "components/ThorUI-uni-components/thorui/tui-toast/tui-toast").then(__webpack_require__.bind(null, /*! @/components/ThorUI-uni-components/thorui/tui-toast/tui-toast.vue */ 40))
   }
 }
 var render = function() {
@@ -185,6 +185,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -192,8 +199,9 @@ var _default =
       index: 0,
       picker: ['伯亨家具', '测试企业'],
       showAlert: true,
-      phone: '',
-      password: '' };
+      phone: '17322309201',
+      password: '123456',
+      isAdmin: false };
 
   },
   methods: {
@@ -223,17 +231,28 @@ var _default =
           phone: this.phone,
           username: '八八',
           password: this.password,
-          company: '伯亨家具' } }).
-
+          company: this.picker[this.index],
+          isAdmin: this.isAdmin //是否是管理员的角色
+        } }).
       then(function (res) {
         uni.hideLoading();
         console.log("返回结果", res.result);
-        if (res.result.code == 1) //登录成功
+        if (res.result.code == 1) {//登录成功
           uni.showToast({
             title: res.result.msg,
-            duration: 1000 });else
+            duration: 1000 });
 
-        {
+          console.log("是否作为管理员登录：", _this.isAdmin);
+          if (!_this.isAdmin) {
+            uni.redirectTo({
+              url: '/pages/main/main' });
+
+          } else {
+            uni.redirectTo({
+              url: '/pages/admin/admin' });
+
+          }
+        } else {
           params.title = res.result.msg;
           params.icon = false;
           _this.$refs.toast.show(params);
@@ -246,8 +265,13 @@ var _default =
     open: function open() {
       this.showAlert = true;
     },
-    PickerChange: function PickerChange() {
-      (function () {});
+    pickerChange: function pickerChange(event) {
+      console.log('picker发送选择改变，携带值为', event.target.value);
+      this.index = event.target.value;
+
+    },
+    switchChange: function switchChange(event) {
+      this.isAdmin = event.target.value;
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 17)["default"]))
 

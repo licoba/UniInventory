@@ -108,7 +108,7 @@
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/ThorUI-uni-components/thorui/tui-toast/tui-toast":"components/ThorUI-uni-components/thorui/tui-toast/tui-toast"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/common/common":"components/common/common","components/ThorUI-uni-components/thorui/tui-toast/tui-toast":"components/ThorUI-uni-components/thorui/tui-toast/tui-toast"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {
