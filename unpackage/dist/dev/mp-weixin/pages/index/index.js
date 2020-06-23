@@ -101,7 +101,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   tuiToast: function() {
-    return __webpack_require__.e(/*! import() | components/ThorUI-uni-components/thorui/tui-toast/tui-toast */ "components/ThorUI-uni-components/thorui/tui-toast/tui-toast").then(__webpack_require__.bind(null, /*! @/components/ThorUI-uni-components/thorui/tui-toast/tui-toast.vue */ 40))
+    return __webpack_require__.e(/*! import() | components/ThorUI-uni-components/thorui/tui-toast/tui-toast */ "components/ThorUI-uni-components/thorui/tui-toast/tui-toast").then(__webpack_require__.bind(null, /*! @/components/ThorUI-uni-components/thorui/tui-toast/tui-toast.vue */ 50))
   }
 }
 var render = function() {
@@ -140,7 +140,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni, uniCloud) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
 //
 //
 //
@@ -248,7 +247,7 @@ var _default =
               url: '/pages/main/main' });
 
           } else {
-            uni.redirectTo({
+            uni.navigateTo({
               url: '/pages/admin/admin' });
 
           }

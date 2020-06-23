@@ -2,7 +2,6 @@
 	<view class="content">
 		<cu-custom bgImage="https://image.weilanwl.com/color2.0/plugin/sylb2244.jpg" :isBack="false">
 			<block slot="backText">返回</block>
-			<block slot="content"></block>
 		</cu-custom>
 		<view class="title-main">出入库管家</view>
 		<view class="cu-form-group">
@@ -107,7 +106,7 @@
 								url: '/pages/main/main',
 							})
 						} else {
-							uni.redirectTo({
+							uni.navigateTo({
 								url: '/pages/admin/admin',
 							})
 						}

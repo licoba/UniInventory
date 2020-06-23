@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/main/main",
-    "pages/admin/admin"
+    "pages/admin/admin",
+    "pages/admin/user"
   ],
   "subPackages": [],
   "window": {

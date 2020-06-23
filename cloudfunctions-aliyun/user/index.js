@@ -17,9 +17,13 @@ exports.main = async (event, context) => {
 	switch (event.method) {
 		case 'login':
 			console.log("请求登录接口：", event.method)
-			const result = await checkLogin(collection, event)
-			console.log("请求登录接口结果：", result)
-			res = result;
+			res = await checkLogin(collection, event)
+			console.log("请求登录接口结果：", res)
+			break;
+		case 'getAllUsers':
+			console.log("获取所有用户：", event.method)
+			res = await getAllUsers(collection, event)
+			console.log("请求获取所有用户接口结果：", res)
 			break;
 		default:
 			break;
@@ -63,6 +67,27 @@ async function checkLogin(collection, event) {
 			response.msg = '密码错误'
 			response.data = null
 		}
+	}
+	return response
+};
+
+// 查找当前公司名下的所有员工
+async function getAllUsers(collection, event) {
+	let queryresult = []
+	const company = event.company
+
+	if (collection && event) {
+		queryresult = await collection.where({
+			company: event.company,
+		}).get()
+	}
+	if (queryresult.data.length >= 0) {
+		response.code = 1
+		response.msg = "查询成功"
+		response.data = queryresult.data
+	} else {
+		response.msg = "查询失败"
+
 	}
 	return response
 };

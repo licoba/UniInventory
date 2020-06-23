@@ -24,13 +24,25 @@
       "list": []
     },
     "miniprogram": {
-      "current": 0,
+      "current": 2,
       "list": [
         {
-          "name": "",
-          "path": "",
+          "name": "管理员界面",
           "query": "",
-          "id": 0
+          "id": 0,
+          "pathName": "/pages/admin/admin"
+        },
+        {
+          "name": "普通用户界面",
+          "query": "",
+          "id": 1,
+          "pathName": "/pages/main/main"
+        },
+        {
+          "id": 2,
+          "name": "pages/admin/user",
+          "pathName": "pages/admin/user",
+          "query": ""
         }
       ]
     }
