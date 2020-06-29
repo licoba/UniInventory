@@ -21,7 +21,6 @@
 						<view class="cu-tag round bg-grey sm">5</view>
 					</view>
 					<view class="move">
-						<view class="bg-grey">置顶</view>
 						<view class="bg-red">删除</view>
 					</view>
 				</view>
