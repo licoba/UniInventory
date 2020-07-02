@@ -130,7 +130,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni, uniCloud) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
 //
 //
 //
@@ -229,6 +231,24 @@ var _default =
       listTouchDirection: null };
 
   },
+  onReady: function onReady() {var _this = this;
+    uni.showLoading({
+      title: '正在加载…' });
+
+    uniCloud.callFunction({
+      name: 'user',
+      data: {
+        method: 'getAllUsers',
+        company: '伯亨家具' } }).
+
+    then(function (res) {
+      uni.hideLoading();
+      console.log("返回结果", res.result);
+      _this.userList = res.result;
+    }).catch(function (err) {
+      console.error(err);
+    });
+  },
   methods: {
     showModal: function showModal(e) {
       this.modalName = e.currentTarget.dataset.target;
@@ -274,6 +294,7 @@ var _default =
       }
       this.listTouchDirection = null;
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 17)["default"]))
 
 /***/ }),
 

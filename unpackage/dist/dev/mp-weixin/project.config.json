@@ -24,25 +24,25 @@
       "list": []
     },
     "miniprogram": {
-      "current": 2,
+      "current": 0,
       "list": [
+        {
+          "name": "首页",
+          "query": "",
+          "id": 0,
+          "pathName": "pages/index/index"
+        },
         {
           "name": "管理员界面",
           "query": "",
-          "id": 0,
-          "pathName": "/pages/admin/admin"
+          "id": 1,
+          "pathName": "pages/admin/admin"
         },
         {
           "name": "普通用户界面",
           "query": "",
-          "id": 1,
-          "pathName": "/pages/main/main"
-        },
-        {
           "id": 2,
-          "name": "pages/admin/user",
-          "pathName": "pages/admin/user",
-          "query": ""
+          "pathName": "pages/main/main"
         }
       ]
     }
