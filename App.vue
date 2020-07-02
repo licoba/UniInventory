@@ -1,4 +1,5 @@
 <script>
+	import Vue from 'vue'
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
@@ -30,7 +31,8 @@
 		},
 		onHide: function() {
 			console.log('App Hide')
-		}
+		},
+		
 	}
 </script>
 
@@ -39,6 +41,4 @@
 	@import "colorui/main.css";
 	@import "colorui/icon.css";
 	/*每个页面公共css */
-
-	
 </style>

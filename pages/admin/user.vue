@@ -1,33 +1,29 @@
 <template>
 	<view>
-		<cu-custom bgColor="bg-gradual-blue" :isBack="true"><block slot="backText">返回</block>
-		<block slot="content">用户列表</block></cu-custom>
+		<cu-custom bgColor="bg-gradual-blue" :isBack="true"><block slot="backText">返回</block><block slot="content">用户管理</block></cu-custom>
+
 		<scroll-view :scroll-y="modalName==null" class="page" :class="modalName!=null?'show':''">
 			<view class="cu-bar bg-white solid-bottom">
 				<view class="action">
-					<text class="cuIcon-title text-orange "></text> 用户列表
+					<text class="cuIcon-title text-green "></text> 用户列表
 				</view>
 			</view>
 			<view class="cu-list menu-avatar">
-				<view class="cu-item" :class="modalName=='move-box-'+ index?'move-cur':''" v-for="(item,index) in 4" :key="index"
+				<view class="cu-item" :class="modalName=='move-box-'+ index?'move-cur':''" v-for="(user,index) in userList" :key="index"
 				 @touchstart="ListTouchStart" @touchmove="ListTouchMove" @touchend="ListTouchEnd" :data-target="'move-box-' + index">
-					<view class="cu-avatar round lg" :style="[{backgroundImage:'url(https://ossweb-img.qq.com/images/lol/web201310/skin/big2100'+ (index+2) +'.jpg)'}]"></view>
-					<view class="content">
-						<view class="text-grey">文晓港</view>
-						<view class="text-gray text-sm">
-							 13322226666
-						</view>
+					<view class="cu-avatar round round bg-cyan">
+						{{user.username.substring(0,1)}}
+						<!-- <text class="avatar-text">{{user.username.substring(0,1)}}</text> -->
 					</view>
-					<view class="action">
-						<view class="text-grey text-xs">22:20</view>
-						<view class="cu-tag round bg-grey sm">5</view>
+					<view class="content">
+						<view class="text-grey">{{user.username}}</view>
+						<view class="text-gray text-sm">{{user.phone}}</view>
 					</view>
 					<view class="move">
 						<view class="bg-red">删除</view>
 					</view>
 				</view>
 			</view>
-
 		</scroll-view>
 	</view>
 </template>
@@ -37,57 +33,6 @@
 		data() {
 			return {
 				userList: [],
-				cuIconList: [{
-					cuIcon: 'cardboardfill',
-					color: 'red',
-					badge: 120,
-					name: 'VR'
-				}, {
-					cuIcon: 'recordfill',
-					color: 'orange',
-					badge: 1,
-					name: '录像'
-				}, {
-					cuIcon: 'picfill',
-					color: 'yellow',
-					badge: 0,
-					name: '图像'
-				}, {
-					cuIcon: 'noticefill',
-					color: 'olive',
-					badge: 22,
-					name: '通知'
-				}, {
-					cuIcon: 'upstagefill',
-					color: 'cyan',
-					badge: 0,
-					name: '排行榜'
-				}, {
-					cuIcon: 'clothesfill',
-					color: 'blue',
-					badge: 0,
-					name: '皮肤'
-				}, {
-					cuIcon: 'discoverfill',
-					color: 'purple',
-					badge: 0,
-					name: '发现'
-				}, {
-					cuIcon: 'questionfill',
-					color: 'mauve',
-					badge: 0,
-					name: '帮助'
-				}, {
-					cuIcon: 'commandfill',
-					color: 'purple',
-					badge: 0,
-					name: '问答'
-				}, {
-					cuIcon: 'brandfill',
-					color: 'mauve',
-					badge: 0,
-					name: '版权'
-				}],
 				modalName: null,
 				gridCol: 3,
 				gridBorder: false,
@@ -107,12 +52,12 @@
 				name: 'user',
 				data: {
 					method: 'getAllUsers',
-					company:'伯亨家具'
+					company: '伯亨家具'
 				}
 			}).then((res) => {
 				uni.hideLoading();
-				console.log("返回结果", res.result)
-				this.userList = res.result;
+				console.log("all users 返回结果", res.result)
+				this.userList = res.result.data;
 			}).catch((err) => {
 				console.error(err)
 			})

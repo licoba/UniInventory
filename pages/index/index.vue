@@ -1,7 +1,13 @@
 <template>
+	
+
 	<view class="content">
-		<cu-custom bgColor="bg-gradual-blue" :isBack="false"><block slot="backText">返回</block>
-		<block slot="content">出入库管家</block></cu-custom>
+		
+		<cu-custom bgColor="bg-gradual-blue" :isBack="false">
+			<block slot="backText">返回</block>
+			<block slot="content">出入库管家</block>
+		</cu-custom>
+		
 		<view class="cu-form-group">
 			<view class="title">选择企业</view>
 			<picker @change="pickerChange" :value="index" :range="picker">

@@ -1,8 +1,10 @@
 <template name="basics">
 	<view>
+		<cu-custom bgColor="bg-gradual-blue" :isBack="true">
+			<block slot="backText">返回</block>
+			<block slot="content">后台管理</block>
+		</cu-custom>
 		<scroll-view scroll-y class="page">
-			<cu-custom bgColor="bg-gradual-blue" :isBack="true"><block slot="backText">返回</block>
-			<block slot="content">后台管理</block></cu-custom>
 			<view class="nav-list">
 				<navigator hover-class="none" :url="'/pages/admin/' + item.name" class="nav-li" navigateTo :class="'bg-'+item.color"
 				 :style="[{animation: 'show ' + ((index+1)*0.2+1) + 's 1'}]" v-for="(item,index) in elements" :key="index">
@@ -82,15 +84,15 @@
 	.page {
 		height: 100vh;
 	}
-	
+
 	.nav-list {
 		display: flex;
 		flex-wrap: wrap;
 		padding: 60px 40upx 0px;
 		justify-content: space-between;
-		
+
 	}
-	
+
 	.nav-li {
 		padding: 30upx;
 		border-radius: 12upx;
@@ -102,7 +104,7 @@
 		position: relative;
 		z-index: 1;
 	}
-	
+
 	.nav-li::after {
 		content: "";
 		position: absolute;
@@ -116,30 +118,30 @@
 		opacity: 0.2;
 		transform: scale(0.9, 0.9);
 	}
-	
+
 	.nav-li.cur {
 		color: #fff;
 		background: rgb(94, 185, 94);
 		box-shadow: 4upx 4upx 6upx rgba(94, 185, 94, 0.4);
 	}
-	
+
 	.nav-title {
 		font-size: 32upx;
 		font-weight: 300;
 	}
-	
+
 	.nav-title::first-letter {
 		font-size: 40upx;
 		margin-right: 4upx;
 	}
-	
+
 	.nav-name {
 		font-size: 28upx;
 		text-transform: Capitalize;
 		margin-top: 20upx;
 		position: relative;
 	}
-	
+
 	.nav-name::before {
 		content: "";
 		position: absolute;
@@ -151,7 +153,7 @@
 		right: 0;
 		opacity: 0.5;
 	}
-	
+
 	.nav-name::after {
 		content: "";
 		position: absolute;
@@ -163,13 +165,13 @@
 		right: 40upx;
 		opacity: 0.3;
 	}
-	
+
 	.nav-name::first-letter {
 		font-weight: bold;
 		font-size: 36upx;
 		margin-right: 1px;
 	}
-	
+
 	.nav-li text {
 		position: absolute;
 		right: 30upx;
@@ -180,34 +182,34 @@
 		text-align: center;
 		line-height: 60upx;
 	}
-	
+
 	.text-light {
 		font-weight: 300;
 	}
-	
+
 	@keyframes show {
 		0% {
 			transform: translateY(-50px);
 		}
-	
+
 		60% {
 			transform: translateY(40upx);
 		}
-	
+
 		100% {
 			transform: translateY(0px);
 		}
 	}
-	
+
 	@-webkit-keyframes show {
 		0% {
 			transform: translateY(-50px);
 		}
-	
+
 		60% {
 			transform: translateY(40upx);
 		}
-	
+
 		100% {
 			transform: translateY(0px);
 		}
