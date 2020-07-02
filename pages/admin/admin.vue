@@ -1,8 +1,8 @@
 <template name="basics">
 	<view>
 		<scroll-view scroll-y class="page">
-			<image src="https://cdn.nlark.com/yuque/0/2019/png/280374/1552996358228-assets/web-upload/e256b4ce-d9a4-488b-8da2-032747213982.png"
-			 mode="widthFix" class="response"></image>
+			<cu-custom bgColor="bg-gradual-blue" :isBack="true"><block slot="backText">返回</block>
+			<block slot="content">后台管理</block></cu-custom>
 			<view class="nav-list">
 				<navigator hover-class="none" :url="'/pages/admin/' + item.name" class="nav-li" navigateTo :class="'bg-'+item.color"
 				 :style="[{animation: 'show ' + ((index+1)*0.2+1) + 's 1'}]" v-for="(item,index) in elements" :key="index">
@@ -86,8 +86,9 @@
 	.nav-list {
 		display: flex;
 		flex-wrap: wrap;
-		padding: 0px 40upx 0px;
+		padding: 60px 40upx 0px;
 		justify-content: space-between;
+		
 	}
 	
 	.nav-li {

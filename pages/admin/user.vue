@@ -1,5 +1,7 @@
 <template>
 	<view>
+		<cu-custom bgColor="bg-gradual-blue" :isBack="true"><block slot="backText">返回</block>
+		<block slot="content">用户列表</block></cu-custom>
 		<scroll-view :scroll-y="modalName==null" class="page" :class="modalName!=null?'show':''">
 			<view class="cu-bar bg-white solid-bottom">
 				<view class="action">

@@ -1,9 +1,7 @@
 <template>
 	<view class="content">
-		<cu-custom bgImage="https://image.weilanwl.com/color2.0/plugin/sylb2244.jpg" :isBack="false">
-			<block slot="backText">返回</block>
-		</cu-custom>
-		<view class="title-main">出入库管家</view>
+		<cu-custom bgColor="bg-gradual-blue" :isBack="false"><block slot="backText">返回</block>
+		<block slot="content">出入库管家</block></cu-custom>
 		<view class="cu-form-group">
 			<view class="title">选择企业</view>
 			<picker @change="pickerChange" :value="index" :range="picker">
