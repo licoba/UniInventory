@@ -1,6 +1,6 @@
 # 出入库管家（跨平台）
 
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/licoba/UniInventory)
 
 基于UniApp的，出入库管家系统。跨平台、小程序、前端都可以使用
 
@@ -23,6 +23,7 @@
 
 ## 开发记录
 
+- 2020/07/02 首页、管理员界面、用户管理界面
 - 2020/06/22 第一个可以运行的release版本
  
 ## 安装
@@ -50,12 +51,12 @@ $ standard-readme-spec
 ## 徽章
 如果你的项目遵循 Standard-Readme 而且项目位于 Github 上，非常希望你能把这个徽章加入你的项目。它可以更多的人访问到这个项目，而且采纳 Stand-README。 加入徽章**并非强制的**。 
 
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/licoba/UniInventory)
 
 为了加入徽章到 Markdown 文本里面，可以使用以下代码：
 
 ```
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/licoba/UniInventory)
 ```
 
 ## 示例
@@ -73,15 +74,20 @@ $ standard-readme-spec
 
 ## 如何贡献
 
-非常欢迎你的加入！[提一个 Issue](https://github.com/RichardLitt/standard-readme/issues/new) 或者提交一个 Pull Request。
+非常欢迎你的加入！[提一个 Issue](https://github.com/licoba/UniInventory/issues/new) 或者提交一个 Pull Request。
 
 
 标准 Readme 遵循 [Contributor Covenant](http://contributor-covenant.org/version/1/3/0/) 行为规范。
 
 ### 贡献者
 
-感谢以下参与项目的人：
-<a href="graphs/contributors"><img src="https://opencollective.com/standard-readme/contributors.svg?width=890&button=false" /></a>
+感谢以下贡献者，欢迎更多人加入一起贡献：
+<table><tbody>
+      <tr>
+	  <td><a target="_blank" href="https://github.com/licoba"><img width="60px" src="https://avatars2.githubusercontent.com/u/19327381?s=60&amp;v=4"></a></td>
+	  <td><a target="_blank" href="https://github.com/sueRimn"><img width="60px" src="https://avatars2.githubusercontent.com/u/37521884?s=60&amp;v=4"></a></td>
+     </tr>
+</tbody></table>
 
 
 ## 使用许可
