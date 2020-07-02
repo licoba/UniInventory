@@ -1,6 +1,9 @@
 # 出入库管家（跨平台）
 
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/licoba/UniInventory)
+![GitHub repo size](https://img.shields.io/github/repo-size/licoba/UniInventory?style=flat-square)
+![GitHub language count](https://img.shields.io/github/languages/count/licoba/UniInventory?style=flat-square)
+
+![Platform compliant](https://img.shields.io/badge/Platform-Uni--App-brightgreen?style=flat-square)
 
 基于UniApp的，出入库管家系统。跨平台、小程序、前端都可以使用
 
