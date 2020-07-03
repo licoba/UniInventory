@@ -62,7 +62,7 @@
         "appid" : "",
         "setting" : {
             "urlCheck" : false,
-			"es6":true
+            "es6" : true
         },
         "usingComponents" : true
     },
@@ -74,5 +74,9 @@
     },
     "mp-toutiao" : {
         "usingComponents" : true
+    },
+    "h5" : {
+        "title" : "出入库管家",
+        "domain" : "licoba.top"
     }
 }

@@ -84,7 +84,7 @@
 
 				// this.showAlert = true
 				uni.showLoading({
-					title: '登录中……'
+					title: '登录中…'
 				});
 				uniCloud.callFunction({
 					name: 'user',
